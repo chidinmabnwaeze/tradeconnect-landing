@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState} from "react";
 import {
   ArrowRight,
   Check,
   Leaf,
   Menu,
-  PackageCheck,
   ShieldCheck,
   Sprout,
   Store,
@@ -17,6 +16,7 @@ import produce from "./assets/Produce_00059.png";
 import farmer from "./assets/Just farmer_00039.png";
 import buyer from "./assets/Just Buyer OO_00039.png";
 import logo from "./assets/Logo.png";
+// import useNavigate from "./hooks/useNavigate";
 
 const nav = [
   ["Home", "home"],
@@ -77,12 +77,14 @@ function App() {
             >
               Log in
             </button>
-            <button
-              onClick={() => scrollTo("contact")}
+            <a
+              href="https://tradeconnectmarket.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[#a33b2a] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#a33b2a]/15 transition hover:-translate-y-0.5"
             >
               Get started <ArrowRight className="ml-1 inline" size={15} />
-            </button>
+            </a>
           </div>
           <button
             onClick={() => setOpen(!open)}
@@ -139,7 +141,7 @@ function App() {
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-white/75">
               TradeConnect brings farmers and buyers together through trusted,
-              administrator-assisted trade — simple to use, transparent, and
+              administrator-assisted trade. Simple to use, transparent, and
               built for every community.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
