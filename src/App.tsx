@@ -157,7 +157,7 @@ function App() {
                 See how it works
               </button>
             </div>
-            <div className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/15 pt-6 text-sm">
+            {/* <div className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/15 pt-6 text-sm">
               {[
                 ["2,400+", "Products listed"],
                 ["1,200+", "Verified users"],
@@ -168,11 +168,11 @@ function App() {
                   <span className="text-white/60">{label}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <div className="animate-float absolute bottom-10 right-8 hidden rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-md lg:block">
+        {/* <div className="animate-float absolute bottom-10 right-8 hidden rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-md lg:block">
           <div className="flex items-center gap-3">
             <span className="grid h-10 w-10 place-items-center rounded-full bg-[#eaf5e8] text-[#3c7b43]">
               <PackageCheck size={20} />
@@ -182,7 +182,7 @@ function App() {
               <p className="text-xs text-white/65">Delivered with care</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section id="about" className="bg-white py-24">
