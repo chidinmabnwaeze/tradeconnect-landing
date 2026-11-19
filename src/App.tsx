@@ -26,14 +26,14 @@ const nav = [
   ["Admin", "admin"],
 ];
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 function App() {
   const [open, setOpen] = useState(false);
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setOpen(false);
   };
-  const CONTACT_EMAIL = "hello@rexise.com";
-const CURRENT_YEAR = new Date().getFullYear();
 
   return (
     <main className="overflow-hidden bg-[#fbfaf7] text-[#24231f]">
@@ -47,9 +47,14 @@ const CURRENT_YEAR = new Date().getFullYear();
             className="flex items-center gap-2.5 font-bold tracking-tight"
             aria-label="Tradeconnect home"
           >
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-[#a33b2a] text-white">
-              <Leaf size={19} />
-            </span>
+            <img
+              src={logo}
+              alt=""
+              aria-hidden="true"
+              className="h-12 w-auto"
+              width={34}
+              height={48}
+            />
             <span className="text-xl">
               Trade<span className="text-[#a33b2a]">Connect</span>
             </span>
@@ -104,18 +109,35 @@ const CURRENT_YEAR = new Date().getFullYear();
         )}
       </header>
 
-      <section id="home" className="hero-grid relative min-h-[720px] pt-[72px]">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 lg:grid-cols-[0.88fr_1.12fr] lg:px-8 lg:py-24">
-          <div className="relative z-10">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#a33b2a]/15 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#a33b2a]">
+      <section
+        id="home"
+        className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-[#14110d] pt-[72px] text-white"
+      >
+        {/* Background image */}
+        <img
+          src={produce}
+          alt=""
+          aria-hidden="true"
+          className="hero-bg absolute inset-0 -z-20 h-full w-full object-cover object-[72%_center] opacity-60 lg:opacity-75"
+        />
+        {/* Overlays: warm directional scrim, brand tint, bottom fade */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#14110d] via-[#14110d]/85 to-[#14110d]/20" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_40%,rgba(163,59,42,0.35),transparent_60%)]" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-[#14110d] to-transparent" />
+
+        <div className="mx-auto w-full max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+          <div className="max-w-2xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#f3c9a8] backdrop-blur-sm">
               <Sprout size={15} /> Built for local trade
             </div>
-            <h1 className="max-w-xl text-5xl font-black leading-[1.02] tracking-[-0.055em] text-[#24231f] sm:text-6xl lg:text-[72px]">
+            <h1 className="text-5xl font-black leading-[1.02] tracking-[-0.055em] sm:text-6xl lg:text-[76px]">
               Fresh produce.
               <br />
-              <span className="text-[#a33b2a]">Fairer markets.</span>
+              <span className="bg-gradient-to-r from-[#f08a6c] to-[#e4bb91] bg-clip-text text-transparent">
+                Fairer markets.
+              </span>
             </h1>
-            <p className="mt-7 max-w-lg text-lg leading-8 text-[#68665f]">
+            <p className="mt-7 max-w-lg text-lg leading-8 text-white/75">
               TradeConnect brings farmers and buyers together through trusted,
               administrator-assisted trade — simple to use, transparent, and
               built for every community.
@@ -123,50 +145,41 @@ const CURRENT_YEAR = new Date().getFullYear();
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => scrollTo("marketplace")}
-                className="rounded-full bg-[#a33b2a] px-7 py-4 text-sm font-bold text-white shadow-xl shadow-[#a33b2a]/20"
+                className="rounded-full bg-[#a33b2a] px-7 py-4 text-sm font-bold text-white shadow-xl shadow-[#a33b2a]/30 transition hover:-translate-y-0.5 hover:bg-[#b54532]"
               >
                 Explore marketplace{" "}
                 <ArrowRight className="ml-2 inline" size={17} />
               </button>
               <button
                 onClick={() => scrollTo("how")}
-                className="rounded-full border border-[#d9d3c7] bg-white px-7 py-4 text-sm font-bold"
+                className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/15"
               >
                 See how it works
               </button>
             </div>
-            <div className="mt-10 flex gap-8 border-t border-[#ddd7cb] pt-6 text-sm">
-              <div>
-                <strong className="block text-xl">2,400+</strong>
-                <span className="text-[#77756e]">Products listed</span>
-              </div>
-              <div>
-                <strong className="block text-xl">1,200+</strong>
-                <span className="text-[#77756e]">Verified users</span>
-              </div>
-              <div>
-                <strong className="block text-xl">32</strong>
-                <span className="text-[#77756e]">Local markets</span>
-              </div>
+            <div className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/15 pt-6 text-sm">
+              {[
+                ["2,400+", "Products listed"],
+                ["1,200+", "Verified users"],
+                ["32", "Local markets"],
+              ].map(([value, label]) => (
+                <div key={label}>
+                  <strong className="block text-2xl font-black">{value}</strong>
+                  <span className="text-white/60">{label}</span>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-[670px]">
-            <div className="absolute -inset-8 rounded-full bg-[#e4bb91]/25 blur-3xl" />
-            <img
-              src={produce}
-              alt="Fresh produce marketplace interface"
-              className="relative w-full rounded-[28px] shadow-[0_35px_70px_rgba(62,43,26,.18)]"
-            />
-            <div className="animate-float absolute -bottom-7 -left-2 rounded-2xl border border-white/70 bg-white p-4 shadow-xl sm:left-[-30px]">
-              <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-[#eaf5e8] text-[#3c7b43]">
-                  <PackageCheck size={20} />
-                </span>
-                <div>
-                  <strong className="text-sm">Order confirmed</strong>
-                  <p className="text-xs text-[#77756e]">Delivered with care</p>
-                </div>
-              </div>
+        </div>
+
+        <div className="animate-float absolute bottom-10 right-8 hidden rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-md lg:block">
+          <div className="flex items-center gap-3">
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-[#eaf5e8] text-[#3c7b43]">
+              <PackageCheck size={20} />
+            </span>
+            <div>
+              <strong className="text-sm">Order confirmed</strong>
+              <p className="text-xs text-white/65">Delivered with care</p>
             </div>
           </div>
         </div>
@@ -392,54 +405,85 @@ const CURRENT_YEAR = new Date().getFullYear();
         </div>
       </section>
 
-  
-    <footer className="site-footer">
-      <div className="container footer-grid">
-        <div className="footer-brand">
-          <img src={logo} alt="Rexise — one mannequin, multiple fits, more possibilities" width="200" height="88" loading="lazy" />
-        </div>
-        <div>
-          <h4>Explore</h4>
-          <ul>
-            {nav.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            {/* <li>
-              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            </li> */}
-            <li>
-              <a href="#contact">Send an enquiry</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="container footer-bottom">
-        <img src={logo} alt="" width="84" height="33" aria-hidden="true" />
-        <p>© {CURRENT_YEAR} Rexise. All rights reserved.</p>
-      </div>
-    </footer>
- 
-
-      {/* <footer className="bg-[#24231f] py-10 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <div className="flex items-center gap-2.5 font-bold">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#a33b2a]">
-              <Leaf size={16} />
-            </span>
-            TradeConnect
+      <footer className="bg-[#1c1a16] text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] lg:px-8">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <button
+              onClick={() => scrollTo("home")}
+              className="flex items-center gap-3"
+              aria-label="Back to top"
+            >
+              <img
+                src={logo}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="h-16 w-auto brightness-0 invert"
+                width={45}
+                height={64}
+              />
+              <span className="text-2xl font-bold tracking-tight">
+                Trade<span className="text-[#e4a387]">Connect</span>
+              </span>
+            </button>
+            <p className="mt-5 max-w-xs text-sm leading-7 text-white/55">
+              A trusted digital marketplace connecting farmers and buyers
+              through fair, administrator-assisted trade.
+            </p>
           </div>
-          <p className="text-sm text-white/50">
-            © 2026 TradeConnect. Connecting markets responsibly.
-          </p>
+
+          <div>
+            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-[#d9b887]">
+              Explore
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {nav.map(([label, id]) => (
+                <li key={id}>
+                  <button
+                    onClick={() => scrollTo(id)}
+                    className="text-white/65 transition hover:text-white"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-[#d9b887]">
+              Platform
+            </h4>
+            <ul className="space-y-3 text-sm text-white/65">
+              <li>For farmers</li>
+              <li>For buyers</li>
+              <li>For administrators</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-[#d9b887]">
+              Get in touch
+            </h4>
+            <p className="text-sm leading-7 text-white/65">
+              Ready to grow your market with us?
+            </p>
+            <button
+              onClick={() => scrollTo("contact")}
+              className="mt-4 inline-flex items-center rounded-full bg-[#a33b2a] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#b54532]"
+            >
+              Get started <ArrowRight className="ml-2" size={15} />
+            </button>
+          </div>
         </div>
-      </footer> */}
+
+        <div className="border-t border-white/10">
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-6 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <p>© {CURRENT_YEAR} TradeConnect. All rights reserved.</p>
+            <p>Connecting markets responsibly.</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
