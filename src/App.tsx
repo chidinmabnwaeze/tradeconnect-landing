@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -402,7 +402,13 @@ function App() {
             onClick={() => scrollTo("home")}
             className="rounded-full bg-white px-7 py-4 text-sm font-black text-[#a33b2a] shadow-xl"
           >
-            Join TradeConnect <ArrowRight className="ml-2 inline" size={17} />
+            <a
+              href="https://tradeconnectmarket.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join TradeConnect <ArrowRight className="ml-2 inline" size={17} />
+            </a>
           </button>
         </div>
       </section>
