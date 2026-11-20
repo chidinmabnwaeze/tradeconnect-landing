@@ -16,6 +16,8 @@ import produce from "./assets/Produce_00059.png";
 import farmer from "./assets/Just farmer_00039.png";
 import buyer from "./assets/Just Buyer OO_00039.png";
 import logo from "./assets/Logo.png";
+import innov8Logo from "./assets/cropped-Innov8-LOGO (1).png";
+import schoolLogo from "./assets/gidan-waya logo.jpeg";
 // import useNavigate from "./hooks/useNavigate";
 
 const nav = [
@@ -24,6 +26,7 @@ const nav = [
   ["How it works", "how"],
   ["Marketplace", "marketplace"],
   ["Admin", "admin"],
+  ["Partners", "partners"],
 ];
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -384,6 +387,46 @@ function App() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="partners" className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="mb-12 text-center">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#a33b2a]">
+              Our partners
+            </p>
+            <h2 className="text-4xl font-black tracking-[-0.04em] sm:text-5xl">
+             Partners and Support.
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl leading-7 text-[#68665f]">
+              TradeConnect is made possible through collaboration with
+              organisations committed to innovation and education.
+            </p>
+          </div>
+          <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2">
+            {[
+              { name: "Innov8", logo: innov8Logo },
+              { name: "College of Education, Gidan Waya", logo: schoolLogo },
+            ].map(({ name, logo: src }) => (
+              <figure
+                key={name}
+                className="flex flex-col items-center justify-center gap-5 rounded-[28px] border border-[#ebe6dc] bg-white p-8 transition hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="flex h-28 w-full items-center justify-center">
+                  <img
+                    src={src}
+                    alt={`${name} logo`}
+                    loading="lazy"
+                    className="max-h-full max-w-[220px] object-contain"
+                  />
+                </div>
+                <figcaption className="text-center text-sm font-bold text-[#68665f]">
+                  {name}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
